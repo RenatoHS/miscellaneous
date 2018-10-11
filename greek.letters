@@ -61,12 +61,8 @@ greek.letters <- function(lett, cap, gloss = NULL){
   idx<-which(!is.na(match(tolower(greek_lett), tolower(lett))))
   
   # small or capital greek letter ? 
-  if(cap == "small"){
-    idx2 <- which(dat$cap[idx] == 'small')
-  }
-  if(cap == "capital"){
-    idx2 <- which(dat$cap[idx ] == 'capital')
-  }
+  idx2 <- which(dat$cap[idx] == cap)
+
   
   # retrieve unicode of greek letter
   chosen_greek_lett <- dat$ucode[idx[idx2]]
