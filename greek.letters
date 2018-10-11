@@ -48,24 +48,32 @@ greek.letters <- function(lett, cap, gloss = NULL){
   if(all(is.na(match(tolower(greek_lett), tolower(lett))))){
     warning("This letter does not exist, please use gloss = 'yes' to see all possible greek letters")
   }
-  
+ 
   # print possible letters to the user
   if(gloss == 'yes'){
     print(greek_let[25:49])
   }
   
   
+  # get unique letters
+  lett.unique <- unique(lett)
+  
   dat<-as.data.frame(cbind(ucode, cap, greek_lett), stringsAsFactors=FALSE)
   
   # find chosen letters in the database
-  idx<-which(!is.na(match(tolower(greek_lett), tolower(lett))))
+  idx<-which(!is.na(match(tolower(greek_lett), tolower(lett.unique))))
   
   # small or capital greek letter ? 
-  idx2 <- which(dat$cap[idx] == cap)
+  idx2 <- which(dat$cap[idx] == type)
 
-  
   # retrieve unicode of greek letter
   chosen_greek_lett <- dat$ucode[idx[idx2]]
+  
+  # in case there are some replicated letters in the input object
+  # replicate letter symbols equal to the input order of the user
+  if(length(lett.unique) < length(lett)){
+    chosen_greek_lett <- c(chosen_greek_lett[match(lett,dat$greek_lett[idx[idx2]])])
+  }
   
   return(chosen_gree_lett)
 }
