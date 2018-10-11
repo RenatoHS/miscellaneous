@@ -51,7 +51,7 @@ greek.letters <- function(lett, cap, gloss = NULL){
  
   # print possible letters to the user
   if(gloss == 'yes'){
-    print(greek_let[25:49])
+    print(greek_lett[25:49])
   }
   
   
