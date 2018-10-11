@@ -51,8 +51,11 @@ greek.letters <- function(lett, cap, gloss = NULL){
  
   # print possible letters to the user
   if(gloss == 'yes'){
-    print(greek_lett[25:49])
+    lett_opt<-as.matrix((greek_lett[25:49]))
+    colnames(lett_opt)<-'Options Available'
+    print(lett_opt)
   }
+  if(is.null(gloss)){
   
   
   # get unique letters
@@ -76,4 +79,5 @@ greek.letters <- function(lett, cap, gloss = NULL){
   }
   
   return(chosen_greek_lett)
+  }
 }
