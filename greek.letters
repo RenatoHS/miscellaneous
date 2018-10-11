@@ -1,0 +1,75 @@
+############################################################################################################################################
+# Function that rusing unicode to genenarate a greek letter symbol string as an output
+# May be useful if these symbols are needed in figures
+############################################################################################################################################ 
+#
+# Function written by Renato Henriques-Silva
+
+#  Copyright GPL-2 2012 Renato Henriques-Silva
+#  http://www.gnu.org/licenses/gpl-2.0.txt
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+############################################################################################################################################
+# INPUT 
+# lett = can be a unique string of a greek letter (ex. "Alpha", "Beta") or a vector of strings  (ex. c("Alpha","Beta"))
+# cap = 'capital' or 'small' --> select whether the greek letter symbol is capital or small
+# gloss = 'yes' or 'no' --> if yes, the function will print all possible greek letters that the user can input in "lett"
+
+############################################################################################################################################
+
+
+greek.letters <- function(lett, cap, gloss==NULL){
+  
+  
+  
+  # data
+  ucode<-c("\u0391","\u0392","\u0393","\u0394","\u0395","\u0396","\u0397","\u0398","\u0399","\u039A","\u039B","\u039C"
+           ,"\u039D","\u039E","\u039F","\u03A0","\u03A1","\u03A3","\u03A4","\u03A5","\u03A6","\u03A7","\u03A8","\u03A9"
+           ,"\u03B1","\u03B2","\u03B3","\u03B4","\u03B5","\u03B6","\u03B7","\u03B8","\u03B9"
+           ,"\u03BA","\u03BB","\u03BC","\u03BD","\u03BE","\u03BF","\u03C0","\u03C1","\u03C2","\u03C3","\u03C4","\u03C5"
+           ,"\u03C6","\u03C7","\u03C8","\u03C9")
+  
+  cap <-c(replicate(24,"capital"),replicate(25,"small"))
+  
+  greek_lett<-c("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi",
+                "Omicron","Pi","Rho","Sigma", "Tau", "Upsilon", "Phi","Chi","Psi","Omega","Alpha","Beta","Gamma","Delta",
+                "Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi",
+                "Omicron","Pi","Rho","Final.Sigma","Sigma", "Tau", "Upsilon", "Phi","Chi","Psi","Omega")
+  
+  # verify whether the inputted greek letter exist in the data
+  if(all(is.na(match(tolower(greek_let), tolower(lett))))){
+    warning("This letter does not exist, please use gloss = 'yes' to see all possible greek letters")
+  }
+  
+  # print possible letters to the user
+  if(gloss == 'yes'){
+    print(greek_let[25:49])
+  }
+  
+  
+  dat<-as.data.frame(cbind(ucode, cap, greek_lett), stringsAsFactors=FALSE)
+  
+  # find chosen letters in the database
+  idx<-which(!is.na(match(tolower(greek_lett), tolower(lett))))
+  
+  # small or capital greek letter ? 
+  if(cap == "small"){
+    idx2 <- which(dat$cap[idx] == 'small')
+  }
+  if(cap == "capital"){
+    idx2 <- which(dat$cap[idx ] == 'capital')
+  }
+  
+  # retrieve unicode of greek letter
+  chosen_greek_lett <- dat$ucode[idx[idx2]]
+  
+  return(chosen_gree_lett)
+}
