@@ -75,5 +75,5 @@ greek.letters <- function(lett, cap, gloss = NULL){
     chosen_greek_lett <- c(chosen_greek_lett[match(lett,dat$greek_lett[idx[idx2]])])
   }
   
-  return(chosen_gree_lett)
+  return(chosen_greek_lett)
 }
