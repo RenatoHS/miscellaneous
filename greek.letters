@@ -51,9 +51,10 @@ greek.letters <- function(lett, cap, gloss = NULL){
  
   # print possible letters to the user
   if(gloss == 'yes'){
-    lett_opt<-as.matrix((greek_lett[25:49]))
-    colnames(lett_opt)<-'Options Available'
-    print(lett_opt)
+    require(DescTools)
+    lett_opt<-greek_lett[25:49]
+    print("Options Available")
+    print(cbind(StrAlign(lett_opt, sep="\\c")))
   }
   if(is.null(gloss)){
   
