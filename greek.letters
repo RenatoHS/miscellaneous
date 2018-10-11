@@ -45,7 +45,7 @@ greek.letters <- function(lett, cap, gloss = NULL){
                 "Omicron","Pi","Rho","Final.Sigma","Sigma", "Tau", "Upsilon", "Phi","Chi","Psi","Omega")
   
   # verify whether the inputted greek letter exist in the data
-  if(all(is.na(match(tolower(greek_let), tolower(lett))))){
+  if(all(is.na(match(tolower(greek_lett), tolower(lett))))){
     warning("This letter does not exist, please use gloss = 'yes' to see all possible greek letters")
   }
   
