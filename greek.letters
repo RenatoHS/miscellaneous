@@ -20,7 +20,7 @@
 ############################################################################################################################################
 # INPUT 
 # lett = can be a unique string of a greek letter (ex. "Alpha", "Beta") or a vector of strings  (ex. c("Alpha","Beta"))
-# cap = 'capital' or 'small' --> select whether the greek letter symbol is capital or small
+# type = 'capital' or 'small' --> select whether the greek letter symbol is capital or small
 # gloss = 'yes' or 'no' --> if yes, the function will print all possible greek letters that the user can input in "lett"
 
 ############################################################################################################################################
