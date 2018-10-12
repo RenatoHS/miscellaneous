@@ -50,7 +50,7 @@ greek.letters <- function(lett, cap, gloss = NULL){
   }
  
   # print possible letters to the user
-  if(gloss == 'yes'){
+  if(!is.null(gloss)){
     require(DescTools)
     lett_opt<-greek_lett[25:49]
     print("Options Available")
