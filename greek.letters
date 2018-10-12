@@ -26,7 +26,7 @@
 ############################################################################################################################################
 
 
-greek.letters <- function(lett, cap, gloss = NULL){
+greek.letters <- function(lett, cap, gloss = 'no'){
   
   
   
@@ -50,15 +50,14 @@ greek.letters <- function(lett, cap, gloss = NULL){
   }
  
   # print possible letters to the user
-  if(!is.null(gloss)){
+  if(gloss == 'yes'){
     require(DescTools)
     lett_opt<-greek_lett[25:49]
     print("Options Available")
     print(cbind(StrAlign(lett_opt, sep="\\c")))
   }
-  if(is.null(gloss)){
-  
-  
+  if(gloss == 'no'){
+ 
   # get unique letters
   lett.unique <- unique(lett)
   
